@@ -1,21 +1,14 @@
 import Link from "next/link";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 export default function Header() {
   return (
-    <header className="bg-white ">
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold">
-          FamilyFriends
-        </Link>
-        {/* <div className="flex gap-4">
-          <Link href="/" className="hover:text-blue-500">
-            Home
-          </Link>
-          <Link href="/pets" className="hover:text-blue-500">
-            Pets
-          </Link>
-        </div> */}
-      </nav>
+    <header>
+      {" "}
+      <div className="container mx-auto p-5 pb-[3rem] pt-[2rem] grid grid-cols-2 mx-auto justify-between flex items-center h-16 ">
+        {" "}
+        <h1 className="font-extrabold text-lg">FamilyFriends</h1> <IoIosNotificationsOutline size={30} className="col-end-4 " />{" "}
+      </div>{" "}
     </header>
   );
 }
