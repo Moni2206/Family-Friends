@@ -16,6 +16,11 @@ const Footer = () => {
       </Link>
 
       {/* DETAIL */}
+      {/* <Link href={`/detail/${id}`}>
+        <CiStar size={28} className={pathname === "/detail" ? "stroke-red-400" : "stroke-[#ACACAC]"} />
+
+      </Link> */}
+
       <CiStar size={28} className={pathname.startsWith("/detail") ? "stroke-red-400" : "stroke-[#ACACAC]"} />
 
       {/* MESSAGES (ikke aktiv endnu) */}

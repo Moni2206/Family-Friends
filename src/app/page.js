@@ -1,11 +1,14 @@
 import Lister from "@/components/Lister";
 import Search from "@/components/Search";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
     <main>
-      <Search />
-      <Lister />
+      <Suspense fallback={<div>Loading ListerPet...</div>}>
+        <Search />
+        <Lister />
+      </Suspense>
     </main>
   );
 }
