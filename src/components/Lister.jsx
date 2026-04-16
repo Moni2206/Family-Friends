@@ -5,9 +5,7 @@ const Lister = async ({ searchParams }) => {
   const query = params?.query?.toLowerCase() || "";
 
   const response = await fetch("https://api.thedogapi.com/v1/breeds", {
-    headers: {
-      "x-api-key": process.env.DOG_API_KEY,
-    },
+    headers: process.env.DOG_API_KEY ? { "x-api-key": process.env.DOG_API_KEY } : {},
     cache: "no-store",
   });
 
