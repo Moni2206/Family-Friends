@@ -1,6 +1,9 @@
 import ListerPet from "./ListerPet";
 
-const Lister = async () => {
+const Lister = async ({ searchParams }) => {
+  const params = await searchParams;
+  const query = params?.query?.toLowerCase() || "";
+
   const response = await fetch("https://api.thedogapi.com/v1/breeds", {
     headers: {
       "x-api-key": process.env.DOG_API_KEY,
@@ -10,9 +13,11 @@ const Lister = async () => {
 
   const breeds = await response.json();
 
+  const filtered = breeds.filter((breed) => breed.name.toLowerCase().includes(query));
+
   return (
     <div className="container mx-auto p-4 pt-12 grid grid-cols-2 gap-x-4 gap-y-6 items-start">
-      {breeds.map((breed) => (
+      {filtered.map((breed) => (
         <ListerPet key={breed.id} id={breed.id} breedGroup={breed.name} origin={breed.origin || "Unknown"} image={breed.image?.url} />
       ))}
     </div>
@@ -20,49 +25,3 @@ const Lister = async () => {
 };
 
 export default Lister;
-
-// import ListerPet from "./ListerPet";
-
-// const Lister = async () => {
-//   const response = await fetch("https://api.thedogapi.com/v1/breeds", {
-//     headers: {
-//       "x-api-key": process.env.DOG_API_KEY,
-//     },
-//     cache: "no-store",
-//   });
-
-//   const breeds = await response.json();
-
-//   return (
-//     <div className="container mx-auto p-4 pt-12 grid grid-cols-2 gap-x-4 gap-y-6 items-start">
-//       {breeds.map((breed) => (
-//         <ListerPet key={breed.id} id={breed.id} breedGroup={breed.name} origin={breed.origin || "Unknown"} image={breed.image?.url} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Lister;
-
-// import ListerPet from "./ListerPet";
-
-// const Lister = async () => {
-//   const response = await fetch("https://api.thedogapi.com/v1/breeds", {
-//     headers: {
-//       "x-api-key": process.env.DOG_API_KEY,
-//     },
-//     cache: "no-store",
-//   });
-
-//   const breeds = await response.json();
-
-//   return (
-//     <div className="container mx-auto p-4 pt-12 grid grid-cols-2 gap-x-4 gap-y-6 items-start">
-//       {breeds.map((breed) => (
-//         <ListerPet key={breed.id} id={breed.id} breedGroup={breed.name} origin={breed.origin || "Unknown"} image={breed.image?.url} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Lister;
