@@ -39,7 +39,7 @@ export default async function DetailPage({ params }) {
 
         {/* FAVORITE */}
 
-        <Favorit size={40} />
+        <Favorit id={id} />
         {/* <CiStar size={40} className="absolute top-3 right-3 text-white bg-white/40 rounded-full p-1" /> */}
 
         {/* NAME OVER IMAGE */}

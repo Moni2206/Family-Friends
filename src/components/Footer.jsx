@@ -15,19 +15,12 @@ const Footer = () => {
         <FiHome size={28} className={pathname === "/" ? "stroke-red-400" : "stroke-[#ACACAC]"} />
       </Link>
 
-      {/* DETAIL */}
-      {/* <Link href={`/detail/${id}`}>
-        <CiStar size={28} className={pathname === "/detail" ? "stroke-red-400" : "stroke-[#ACACAC]"} />
-
-      </Link> */}
-
-      <CiStar size={28} className={pathname.startsWith("/detail") ? "stroke-red-400" : "stroke-[#ACACAC]"} />
-
+      <CiStar size={28} className="text-[#ACACAC]" />
       {/* MESSAGES (ikke aktiv endnu) */}
       <FiMessageCircle size={28} className="stroke-[#ACACAC]" />
 
       {/* PROFILE (ikke aktiv endnu) */}
-      <CiUser size={28} className="stroke-[#ACACAC]" />
+      <CiUser size={28} className="text-[#ACACAC]" />
     </footer>
   );
 };
