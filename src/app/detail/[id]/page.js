@@ -1,13 +1,10 @@
-export const dynamic = "force-dynamic";
-
 import Link from "next/link";
 import Button from "@/components/Button";
 import Favorit from "@/components/Favorit";
 import { IoIosArrowBack } from "react-icons/io";
+import { Suspense } from "react";
 
-export default async function DetailPage({ params }) {
-  const { id } = params;
-
+async function DetailContent({ id }) {
   const res = await fetch("https://api.thedogapi.com/v1/breeds", {
     headers: {
       "x-api-key": process.env.DOG_API_KEY,
@@ -61,4 +58,18 @@ export default async function DetailPage({ params }) {
       </div>
     </div>
   );
+}
+
+export default async function DetailPage({ params }) {
+  return (
+    <Suspense fallback={<div className="p-4">Indlæser...</div>}>
+      <DetailPageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function DetailPageContent({ params }) {
+  const { id } = await params;
+
+  return <DetailContent id={id} />;
 }
