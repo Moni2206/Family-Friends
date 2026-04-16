@@ -1,11 +1,12 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
-import { CiStar } from "react-icons/ci";
 import Button from "@/components/Button";
-import { IoIosArrowBack } from "react-icons/io";
 import Favorit from "@/components/Favorit";
+import { IoIosArrowBack } from "react-icons/io";
 
 export default async function DetailPage({ params }) {
-  const { id } = await params;
+  const { id } = params;
 
   const res = await fetch("https://api.thedogapi.com/v1/breeds", {
     headers: {
@@ -38,9 +39,7 @@ export default async function DetailPage({ params }) {
         </Link>
 
         {/* FAVORITE */}
-
         <Favorit id={id} />
-        {/* <CiStar size={40} className="absolute top-3 right-3 text-white bg-white/40 rounded-full p-1" /> */}
 
         {/* NAME OVER IMAGE */}
         <div className="absolute bottom-4 left-4 bg-white/70 px-3 py-1 rounded-xl flex items-center gap-2">
@@ -53,12 +52,11 @@ export default async function DetailPage({ params }) {
       <h1 className="text-3xl font-bold mt-4">{dog.name}</h1>
 
       {/* TAGS */}
-
       <Button temperament={temperament} />
 
       {/* DESCRIPTION */}
       <div className="mt-4">
-        <h3 className="text-gray-400 text-sm">Breed description </h3>
+        <h3 className="text-gray-400 text-sm">Breed description</h3>
         <p className="text-gray-600 mt-1">{dog.description}</p>
       </div>
     </div>
