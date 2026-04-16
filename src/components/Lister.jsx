@@ -1,15 +1,19 @@
 import ListerPet from "./ListerPet";
 
 const Lister = async ({ searchParams }) => {
+  // 🔥 Next 16: searchParams er en Promise
   const params = await searchParams;
+
   const query = params?.query?.toLowerCase() || "";
 
   const response = await fetch("https://api.thedogapi.com/v1/breeds", {
-    headers: {
-      "x-api-key": process.env.DOG_API_KEY,
-    },
+    headers: process.env.DOG_API_KEY ? { "x-api-key": process.env.DOG_API_KEY } : {},
     cache: "no-store",
   });
+
+  if (!response.ok) {
+    return <div>Kunne ikke hente hunde 🐶</div>;
+  }
 
   const breeds = await response.json();
 
