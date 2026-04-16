@@ -5,8 +5,11 @@ import { Suspense } from "react";
 export default function Home({ searchParams }) {
   return (
     <main>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading search...</div>}>
         <Search searchParams={searchParams} />
+      </Suspense>
+
+      <Suspense fallback={<div>Loading dogs...</div>}>
         <Lister searchParams={searchParams} />
       </Suspense>
     </main>
